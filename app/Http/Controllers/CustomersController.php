@@ -28,6 +28,7 @@ class CustomersController extends Controller
             'password' => 'required|string|min:8|confirmed',
             'phone' => 'required|string|max:15',
             'code' => 'nullable|string|max:10',
+           
         ]);
 
         $customer = Customer::create([
@@ -37,6 +38,7 @@ class CustomersController extends Controller
             'password' => Hash::make($request->password),
             'phone' => $request->phone,
             'code' => $request->code,
+
         ]);
 
         return redirect()->route('customers.index')->with('success', 'Customer created successfully');
@@ -56,6 +58,8 @@ class CustomersController extends Controller
         'password' => 'nullable|string|min:8|confirmed',
         'phone' => 'required|string|max:15',
         'code' => 'nullable|string|max:10',
+        
+        
     ]);
 
     $customer->update([
